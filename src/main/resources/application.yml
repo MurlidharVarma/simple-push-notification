@@ -1,0 +1,33 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:file:./data/h2db;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: true
+
+server:
+  address: 0.0.0.0
+  port: 8443
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/aipeel.p12
+    key-store-type: PKCS12
+    key-store-password: pushme
+    key-alias: aipeel
+
+vapid:
+  pubKey: BEK-t866raPMapcxRplp8mDKN-sIWIeSKgOqOnjqNRnftTqqLDk_Mz47AloRaGGQ6-2i1OL1Je5Wikc0rZjcUpw
+  pvtKey: _znIL_Gv7ws-8XTDTlfajX9rUjELpds-5Dpjd06W6vQ
+
+#  brave --args --user-data-dir=/tmp/bar --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://localhost:8443
